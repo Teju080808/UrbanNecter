@@ -44,7 +44,8 @@ function Cart() {
   // Coupon logic
   const applyCoupon = () => {
     const validCoupons = {
-      Tejal08: 10
+      Tejal10:10,
+      Tejal20:20
     };
     const entered = coupon.toUpperCase();
     if (validCoupons[entered]) {
@@ -171,7 +172,7 @@ function Cart() {
           <h5>Final Amount: ₹{finalAmount.toFixed(2)}</h5>
 
           <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-            <button className="btn btn-outline-success w-50" onClick={() => navigate("/cartpage")}>View Cart</button>
+            <button className="btn btn-success w-50" onClick={() => navigate("/cartpage")}>View Cart</button>
             <button
               className="btn btn-success w-50"
               onClick={handleCheckout}

@@ -6,7 +6,6 @@ import { myAction } from "./ReducCart/Action";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import "swiper/css";
 
 function ProductDetail() {
@@ -186,7 +185,7 @@ function ProductDetail() {
           contentClassName="border-0 shadow-lg rounded-4 overflow-hidden"
         >
           <Modal.Body className="p-0 position-relative">
-            {/* Floating Close Button */}
+            {/*Close Button */}
             <button
               onClick={() => setModalShow(false)}
               className="btn-close position-absolute"
