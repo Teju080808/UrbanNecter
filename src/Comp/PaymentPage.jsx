@@ -87,7 +87,7 @@ function PaymentPage() {
           borderRadius: "4px",
           border: "1px solid #ddd",
           backgroundColor: paymentSuccess ? "#e6ffed" : "#ffe6e6",
-          color: paymentSuccess ? "#0a0" : "#c00",
+          color: paymentSuccess ? "rgba(26, 92, 26, 0.81)" : "#c00",
           fontWeight: "500",
           fontSize: "15px",
         }}
@@ -100,14 +100,7 @@ function PaymentPage() {
       <div style={{ marginTop: "30px" }}>
         <button
           onClick={() => navigate("/")}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#09a325",
-            color: "#fff",
-            border: "none",
-            borderRadius: "3px",
-            cursor: "pointer",
-          }}
+          className="btn btn-success"
         >
           Back to Home
         </button>

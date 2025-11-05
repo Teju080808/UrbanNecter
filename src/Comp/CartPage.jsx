@@ -27,7 +27,7 @@ function CartPage() {
   }, [cartItems, finalAmount]);
 
   const applyCoupon = () => {
-    const validCoupons = { FOOD10: 10, FOOD20: 20, FOOD50: 50 };
+    const validCoupons = {Tejal08: 10 };
     const entered = coupon.toUpperCase();
     if (validCoupons[entered]) {
       setDiscountPercent(validCoupons[entered]);
@@ -138,15 +138,15 @@ function CartPage() {
                 placeholder="Enter coupon code"
                 style={{ padding: "5px", marginRight: "10px", width: "60%" }}
               />
-              <button onClick={applyCoupon} style={{ padding: "5px 10px", backgroundColor: "#09a325", color: "#fff", border: "none" }}>
+              <button onClick={applyCoupon} className="btn btn-success">
                 Apply
               </button>
-              {message && <p style={{ color: discountPercent ? "#09a325" : "red", fontWeight: "bold" }}>{message}</p>}
+              {message && <p style={{ color: discountPercent ? "rgba(26, 92, 26, 0.81)" : "red", fontWeight: "bold" }}>{message}</p>}
             </div>
 
             <button
               onClick={handleCheckout}
-              style={{ marginTop: "20px", padding: "10px 20px", backgroundColor: "#09a325", color: "#fff", border: "none", borderRadius: "3px", width: "100%" }}
+              className="btn btn-success w-100 mt-4"
             >
               Checkout
             </button>

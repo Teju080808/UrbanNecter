@@ -44,9 +44,7 @@ function Cart() {
   // Coupon logic
   const applyCoupon = () => {
     const validCoupons = {
-      FOOD10: 10,
-      FOOD20: 20,
-      FOOD50: 50,
+      Tejal08: 10
     };
     const entered = coupon.toUpperCase();
     if (validCoupons[entered]) {
@@ -72,7 +70,7 @@ function Cart() {
 
   return (
     <Offcanvas show={show} onHide={handleClose} placement="end">
-      <Offcanvas.Header closeButton style={{ backgroundColor: "#09a325" }}>
+      <Offcanvas.Header closeButton className="bg-success">
         <Offcanvas.Title>
           <h4 className="text-light">
             {cartCount} Item{cartCount > 1 ? "s" : ""} in Cart
@@ -118,7 +116,7 @@ function Cart() {
                   <i className="fa-solid fa-trash-can"></i>
                 </span>
                 <h6 className="mt-2">
-                  Item Total: ₹{item.price * item.quantity}
+                  Total: ₹{item.price * item.quantity}
                 </h6>
               </div>
               <hr className="my-2" />
@@ -140,8 +138,8 @@ function Cart() {
             style={{ marginRight: "10px" }}
           />
           <button
-            className="btn text-white"
-            style={{ backgroundColor: "#09a325" }}
+            className="btn text-white btn-success"
+            
             onClick={applyCoupon}
           >
             Apply
@@ -173,7 +171,7 @@ function Cart() {
           <h5>Final Amount: ₹{finalAmount.toFixed(2)}</h5>
 
           <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-            <button className="btn btn-secondary w-50" onClick={() => navigate("/cartpage")}>View Cart</button>
+            <button className="btn btn-outline-success w-50" onClick={() => navigate("/cartpage")}>View Cart</button>
             <button
               className="btn btn-success w-50"
               onClick={handleCheckout}

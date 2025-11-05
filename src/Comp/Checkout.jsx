@@ -95,6 +95,7 @@ function Checkout() {
         total: finalAmount,
       },
     });
+    alert("Thank you for your order!")
   };
 
   return (
@@ -106,7 +107,7 @@ function Checkout() {
         <h5>Contact information</h5>
         <span
           onClick={() => navigate("/login")}
-          style={{ display: "flex", justifyContent: "flex-end", color: "#09a325", cursor: "pointer", marginBottom: "5px" }}
+          style={{ display: "flex", justifyContent: "flex-end", cursor: "pointer", marginBottom: "5px" }}
         >
           Login
         </span>
@@ -129,13 +130,13 @@ function Checkout() {
             <>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <strong>{pickup.name}</strong>
-                <span style={{ color: "#09a325", fontWeight: "bold" }}>{pickup.cost}</span>
+                <span>{pickup.cost}</span>
               </div>
               <p style={{ margin: "5px 0" }}>{pickup.address}</p>
               <p>{pickup.floor}</p>
               <span
                 onClick={() => setIsEditingPickup(true)}
-                style={{ position: "absolute", top: "15px", right: "15px", color: "#09a325", cursor: "pointer" }}
+                style={{ position: "absolute", top: "15px", right: "60px", cursor: "pointer" }}
               >
                 Edit
               </span>
@@ -146,7 +147,7 @@ function Checkout() {
               <input type="text" value={pickup.address} onChange={(e) => setPickup({ ...pickup, address: e.target.value })} placeholder="Address" style={{ width: "100%", padding: "8px", marginBottom: "8px" }} />
               <input type="text" value={pickup.floor} onChange={(e) => setPickup({ ...pickup, floor: e.target.value })} placeholder="Floor / Details" style={{ width: "100%", padding: "8px", marginBottom: "8px" }} />
               <input type="text" value={pickup.cost} onChange={(e) => setPickup({ ...pickup, cost: e.target.value })} placeholder="Cost" style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
-              <button onClick={() => setIsEditingPickup(false)} style={{ backgroundColor: "#09a325", color: "#fff", padding: "8px 20px", border: "none", borderRadius: "3px", cursor: "pointer" }}>Save</button>
+              <button className="btn btn-success" onClick={() => setIsEditingPickup(false)}>Save</button>
             </>
           )}
         </div>
@@ -163,7 +164,7 @@ function Checkout() {
               <p>{billing.phone}</p>
               <span
                 onClick={() => setIsEditingBilling(true)}
-                style={{ position: "absolute", top: "15px", right: "15px", color: "#09a325", cursor: "pointer" }}
+                style={{ position: "absolute", top: "15px", right: "15px", cursor: "pointer" }}
               >
                 Edit
               </span>
@@ -174,7 +175,7 @@ function Checkout() {
               <input type="text" value={billing.street} onChange={(e) => setBilling({ ...billing, street: e.target.value })} placeholder="Street / Area" style={{ width: "100%", padding: "8px", marginBottom: "8px" }} />
               <input type="text" value={billing.state} onChange={(e) => setBilling({ ...billing, state: e.target.value })} placeholder="State" style={{ width: "100%", padding: "8px", marginBottom: "8px" }} />
               <input type="text" value={billing.phone} onChange={(e) => setBilling({ ...billing, phone: e.target.value })} placeholder="Phone Number" style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
-              <button onClick={() => setIsEditingBilling(false)} style={{ backgroundColor: "#09a325", color: "#fff", padding: "8px 20px", border: "none", borderRadius: "3px", cursor: "pointer" }}>Save</button>
+              <button className="btn btn-success" onClick={() => setIsEditingBilling(false)}>Save</button>
             </>
           )}
         </div>
@@ -217,7 +218,7 @@ function Checkout() {
       {/* Buttons */}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button onClick={() => navigate("/cart")} style={{ background: "none", border: "none", cursor: "pointer" }}>← Return to Cart</button>
-        <button onClick={handlePlaceOrder} style={{ backgroundColor: "#09a325", color: "#fff", padding: "10px 25px", border: "none", borderRadius: "3px", cursor: "pointer" }}>Place Order</button>
+        <button className="btn btn-success" onClick={handlePlaceOrder}>Place Order</button>
       </div>
     </div>
   );

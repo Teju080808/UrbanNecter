@@ -30,7 +30,6 @@ function Menu() {
     },
     button: {
       border: "none",
-      backgroundColor: "#09a325",
       padding: "10px",
       borderRadius: "10%",
       cursor: "pointer",
@@ -141,7 +140,7 @@ function Menu() {
                 <div className="col-md-6 col-12">
                   <h4>{item.title} - ₹{item.price}</h4>
                   <p>{item.Description}</p>
-                  <button className="mt-2" onClick={() => AddToCart(item)} style={styling.button}>
+                  <button className="btn btn-success p-2 mt-2" onClick={() => AddToCart(item)}>
                     <i className="fa-solid fa-cart-plus text-light fs-5"></i>
                   </button>
                 </div>

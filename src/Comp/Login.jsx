@@ -59,7 +59,7 @@ function Login({ setLogin }) {
           textAlign: "center",
         }}
       >
-        <h2 style={{ marginBottom: "25px", color: "#09a325", fontWeight: 700, fontSize: "26px" }}>
+        <h2 className="text-success" style={{ marginBottom: "25px", fontWeight: 700, fontSize: "26px" }}>
           Login
         </h2>
         <input
@@ -100,26 +100,14 @@ function Login({ setLogin }) {
         />
         <button
           type="submit"
-          style={{
-            padding: "12px",
-            backgroundColor: "#09a325",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            fontSize: "16px",
-            cursor: "pointer",
-            width: "100%",
-            transition: "0.3s ease",
-            fontWeight: 600,
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#078d20")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#09a325")}
+          className="btn btn-success w-100"
+         
         >
           Login
         </button>
         <p style={{ marginTop: "15px", fontSize: "14px", color: "#444" }}>
           Don’t have an account?{" "}
-          <Link to="/signup" style={{ color: "#09a325", textDecoration: "none", fontWeight: 600 }}>
+          <Link to="/signup" className="nav-link text-success">
             Signup
           </Link>
         </p>

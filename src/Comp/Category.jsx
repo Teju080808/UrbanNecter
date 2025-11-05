@@ -93,7 +93,7 @@ function Category() {
       {/* Products Grid */}
       <div className="row g-3">
         {state.map((item, i) => (
-          <div className="col-6 col-sm-4 col-md-3 text-center" key={i}>
+          <div className="col-lg-3 col-md-4 col-sm-6 text-center" key={i}>
             <Card className="h-100 shadow-sm">
               <Link to={`/${item.category}/${item.id}`}>
                 <div style={styling.imgContainer} className="img-hover-container">
@@ -113,10 +113,10 @@ function Category() {
                     className="btn btn-sm btn-success"
                     onClick={() => handleCart(item)}
                   >
-                    Add to Cart
+                   <i class="fa-solid fa-cart-shopping"></i>
                   </button>
                   <button
-                    className="btn btn-sm btn-outline-dark"
+                    className="btn btn-sm btn-outline-success"
                     onClick={() => handleView(item)}
                   >
                     View

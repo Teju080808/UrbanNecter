@@ -50,7 +50,7 @@ function Signup() {
           textAlign: "center",
         }}
       >
-        <h2 style={{ marginBottom: "25px", color: "#09a325", fontWeight: 700, fontSize: "26px" }}>
+        <h2 className="text-success" style={{ marginBottom: "25px", fontWeight: 700, fontSize: "26px" }}>
           Sign Up
         </h2>
         <input
@@ -109,26 +109,13 @@ function Signup() {
         />
         <button
           type="submit"
-          style={{
-            padding: "12px",
-            backgroundColor: "#09a325",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            fontSize: "16px",
-            cursor: "pointer",
-            width: "100%",
-            transition: "0.3s ease",
-            fontWeight: 600,
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#078d20")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#09a325")}
+          className="btn btn-success w-100"
         >
           Sign Up
         </button>
         <p style={{ marginTop: "15px", fontSize: "14px", color: "#444" }}>
           Already have an account?{" "}
-          <Link to="/login" style={{ color: "#09a325", textDecoration: "none", fontWeight: 600 }}>
+          <Link to="/login" className="nav-link text-success">
             Login
           </Link>
         </p>

@@ -301,13 +301,7 @@ function Home() {
                 <p style={{ margin: 0 }}>{item.title}</p>
                 <button
                   onClick={() => AddToCart(item)}
-                  style={{
-                    border: "none",
-                    backgroundColor: "#09a325",
-                    padding: "10px",
-                    borderRadius: "10%",
-                    cursor: "pointer",
-                  }}
+                  className="btn btn-success p-2"
                 >
                   <i className="fa-solid fa-cart-plus text-light fs-5"></i>
                 </button>
@@ -397,8 +391,8 @@ function Home() {
         <div className="row g-4 text-center">
           <div className="col-lg-3 col-md-6 col-sm-12">
             <i
-              className="fa-solid fa-parachute-box"
-              style={{ fontSize: "50px", color: "#09a325", padding: "10px" }}
+              className="fa-solid fa-parachute-box text-success"
+              style={{ fontSize: "50px", padding: "10px" }}
             ></i>
             <p>Fast and Fresh Delivery</p>
             <p>
@@ -407,8 +401,8 @@ function Home() {
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
             <i
-              className="fa-regular fa-heart"
-              style={{ fontSize: "50px", color: "#09a325", padding: "10px" }}
+              className="fa-regular fa-heart text-success"
+              style={{ fontSize: "50px", padding: "10px" }}
             ></i>
             <p>Satisfaction Guaranteed</p>
             <p>
@@ -418,8 +412,8 @@ function Home() {
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
             <i
-              className="fa-solid fa-recycle"
-              style={{ fontSize: "50px", color: "#09a325", padding: "10px" }}
+              className="fa-solid fa-recycle text-success"
+              style={{ fontSize: "50px", padding: "10px" }}
             ></i>
             <p>Eco-Friendly Packaging</p>
             <p>
@@ -429,8 +423,8 @@ function Home() {
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
             <i
-              className="fa-solid fa-lock"
-              style={{ fontSize: "50px", color: "#09a325", padding: "10px" }}
+              className="fa-solid fa-lock text-success"
+              style={{ fontSize: "50px", padding: "10px" }}
             ></i>
             <p>Secure Payment Options</p>
             <p>

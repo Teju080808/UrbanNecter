@@ -132,9 +132,9 @@ export default function Header() {
         <div style={styling.cartButtonWrapper}>
           <button
             onClick={() => setShow(show === "cart" ? null : "cart")}
-            style={styling.cartButton}
+            className="btn btn-success p-2"
           >
-            <i className="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping fs-3"></i>
             {cartCount > 0 && <span style={styling.badge}>{cartCount}</span>}
           </button>
         </div>
