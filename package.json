@@ -2,7 +2,7 @@
   "name": "myapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://teju080808.github.io/Urban-Necter/#/",
+  "homepage": ".",
   "dependencies": {
     "@fontsource/lobster-two": "^5.2.6",
     "@fontsource/tangerine": "^5.2.6",
