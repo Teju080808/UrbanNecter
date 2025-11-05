@@ -47,8 +47,8 @@ function ProductDetail() {
 
   async function fetchProduct() {
     try {
-      const info = await axios.get(`http://localhost:3000/${category}/${id}`);
-      const infoo = await axios.get(`http://localhost:3000/${category}`);
+      const info = await axios.get(`https://urbannecter-api-86br.onrender.com/${category}/${id}`);
+      const infoo = await axios.get(`https://urbannecter-api-86br.onrender.com/${category}`);
       setState(info.data);
       setProduct(infoo.data);
       setQuantity(1);

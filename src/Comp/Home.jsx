@@ -20,7 +20,7 @@ function Home() {
     fetchProduct();
   }, [category, id]);
   const fetchProduct = async () => {
-    const info = await axios.get("http://localhost:3000/slider");
+    const info = await axios.get("https://urbannecter-api-86br.onrender.com/slider");
     setProduct(info.data);
   };
   function AddToCart(item) {
