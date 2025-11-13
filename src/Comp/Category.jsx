@@ -38,7 +38,7 @@ function Category() {
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const info = await axios.get(`https://urbannecter-api-86br.onrender.com/${category}`);
+        const info = await axios.get(`http://localhost:3000/${category}`);
         setAllProducts(info.data);
         setState(info.data);
       } catch (err) {

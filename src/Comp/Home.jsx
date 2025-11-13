@@ -20,7 +20,7 @@ function Home() {
     fetchProduct();
   }, [category, id]);
   const fetchProduct = async () => {
-    const info = await axios.get("https://urbannecter-api-86br.onrender.com/slider");
+    const info = await axios.get("http://localhost:3000/slider");
     setProduct(info.data);
   };
   function AddToCart(item) {
@@ -225,11 +225,13 @@ function Home() {
               key={i}
             >
               <Card className="border-0 w-100">
+                <Link to={`/${item.category}`}>
                 <Card.Img
                   src={item.image}
                   alt="Card image"
                   style={{ height: "250px", objectFit: "cover" }}
-                />
+                /></Link>
+
                 <Card.ImgOverlay>
                   <Card.Title>
                     <Link to={`/${item.category}`} style={styling.Link}>

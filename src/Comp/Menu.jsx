@@ -39,11 +39,11 @@ function Menu() {
   async function fetchProduct(category) {
     if (category === "" || category === "menu") {
       await axios
-        .get("https://urbannecter-api-86br.onrender.com/menu", { params: { title: search } })
+        .get("http://localhost:3000/menu", { params: { title: search } })
         .then((res) => setState(res.data));
     } else {
       await axios
-        .get("https://urbannecter-api-86br.onrender.com/data", { params: { category } })
+        .get("http://localhost:3000/data", { params: { category } })
         .then((res) => setState(res.data));
     }
   }
