@@ -39,9 +39,6 @@ function ProductDetail() {
     },
   };
 
-  // -------------------------------
-  // 🚀 FETCH PRODUCT FROM public/db.json
-  // -------------------------------
   useEffect(() => {
     fetchProduct();
   }, [category, id]);
@@ -66,16 +63,10 @@ function ProductDetail() {
     }
   }
 
-  // -------------------------------
-  // RELATED PRODUCTS
-  // -------------------------------
   const relatedProduct = product.filter(
     (item) => item.category === state.category && item.id !== state.id
   );
 
-  // -------------------------------
-  // CART FUNCTIONS
-  // -------------------------------
   function AddToCart() {
     const cartStore = JSON.parse(localStorage.getItem("cartItem")) || [];
     const newCart = [...cartStore, { ...state, quantity }];
@@ -177,7 +168,7 @@ function ProductDetail() {
                     className="btn btn-sm btn-success"
                     onClick={() => handleCart(item)}
                   >
-                    Add to Cart
+                    <i class="fa-solid fa-cart-shopping"></i>
                   </button>
                   <button
                     className="btn btn-sm btn-outline-secondary"

@@ -35,17 +35,17 @@ function Menu() {
 
       let finalData = [];
 
-      // 1️⃣ ALL DATA (ALL CATEGORY)
+      //  ALL DATA (ALL CATEGORY)
       if (cat === "" || cat === "menu") {
         Object.keys(data).forEach((key) => {
           finalData = [...finalData, ...data[key]];
         });
       } else {
-        // 2️⃣ SPECIFIC CATEGORY
+        //  SPECIFIC CATEGORY
         finalData = data[cat] || [];
       }
 
-      // 3️⃣ SEARCH FILTER
+      //  SEARCH FILTER
       if (search.trim() !== "") {
         finalData = finalData.filter((item) =>
           item.title.toLowerCase().includes(search.toLowerCase())
