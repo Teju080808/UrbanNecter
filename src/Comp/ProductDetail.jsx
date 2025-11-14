@@ -37,29 +37,45 @@ function ProductDetail() {
       fontSize: "1rem",
       transition: "all 0.3s",
     },
-    
   };
 
+  // -------------------------------
+  // 🚀 FETCH PRODUCT FROM public/db.json
+  // -------------------------------
   useEffect(() => {
     fetchProduct();
   }, [category, id]);
 
   async function fetchProduct() {
     try {
-      const info = await axios.get(`http://localhost:3000/${category}/${id}`);
-      const infoo = await axios.get(`http://localhost:3000/${category}`);
-      setState(info.data);
-      setProduct(infoo.data);
+      const response = await axios.get("/db.json");
+
+      // category array from db.json
+      const categoryData = response.data[category] || [];
+
+      // find single product
+      const singleProduct = categoryData.find(
+        (item) => String(item.id) === String(id)
+      );
+
+      setState(singleProduct || {});
+      setProduct(categoryData);
       setQuantity(1);
     } catch (err) {
       console.error("Error fetching product:", err);
     }
   }
 
+  // -------------------------------
+  // RELATED PRODUCTS
+  // -------------------------------
   const relatedProduct = product.filter(
     (item) => item.category === state.category && item.id !== state.id
   );
 
+  // -------------------------------
+  // CART FUNCTIONS
+  // -------------------------------
   function AddToCart() {
     const cartStore = JSON.parse(localStorage.getItem("cartItem")) || [];
     const newCart = [...cartStore, { ...state, quantity }];
@@ -102,7 +118,7 @@ function ProductDetail() {
           <div className="py-3">
             <button className="btn btn-outline-success" onClick={handleDecQuantity}>-</button>
             <strong className="p-4">{quantity}</strong>
-            <button  className="btn btn-outline-success" onClick={handleIncQuantity}>+</button>
+            <button className="btn btn-outline-success" onClick={handleIncQuantity}>+</button>
           </div>
 
           <button
@@ -176,7 +192,7 @@ function ProductDetail() {
         ))}
       </div>
 
-       {selectedProduct && (
+      {selectedProduct && (
         <Modal
           show={modalShow}
           onHide={() => setModalShow(false)}
@@ -185,7 +201,6 @@ function ProductDetail() {
           contentClassName="border-0 shadow-lg rounded-4 overflow-hidden"
         >
           <Modal.Body className="p-0 position-relative">
-            {/*Close Button */}
             <button
               onClick={() => setModalShow(false)}
               className="btn-close position-absolute"
@@ -200,7 +215,6 @@ function ProductDetail() {
             ></button>
 
             <div className="d-flex flex-column flex-md-row align-items-stretch">
-              {/* Left Side - Image */}
               <div className="col-12 col-md-6 p-0 position-relative">
                 <img
                   src={selectedProduct.image}
@@ -214,7 +228,6 @@ function ProductDetail() {
                 />
               </div>
 
-              {/* Right Side - Product Details */}
               <div className="col-12 col-md-6 p-4 d-flex flex-column justify-content-center">
                 <p className="fw-semibold fs-5 mb-2">{selectedProduct.title}</p>
 
@@ -226,7 +239,6 @@ function ProductDetail() {
                   {selectedProduct.Description || "No description available."}
                 </p>
 
-                {/* Quantity Selector */}
                 <div className="d-flex align-items-center mb-3">
                   <button
                     className="btn btn-outline-success btn-sm"

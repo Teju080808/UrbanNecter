@@ -12,10 +12,7 @@ function Menu() {
   const [search, setSearch] = useState("");
 
   const styling = {
-    card: {
-      padding: "20px",
-      gap: "20px",
-    },
+    card: { padding: "20px", gap: "20px" },
     imgContainer: {
       width: "100%",
       height: "300px",
@@ -28,33 +25,51 @@ function Menu() {
       objectFit: "cover",
       transition: "transform 0.5s ease",
     },
-    button: {
-      border: "none",
-      padding: "10px",
-      borderRadius: "10%",
-      cursor: "pointer",
-    },
   };
 
-  async function fetchProduct(category) {
-    if (category === "" || category === "menu") {
-      await axios
-        .get("http://localhost:3000/menu", { params: { title: search } })
-        .then((res) => setState(res.data));
-    } else {
-      await axios
-        .get("http://localhost:3000/data", { params: { category } })
-        .then((res) => setState(res.data));
+  // FETCH PRODUCTS FROM LOCAL db.json
+  async function fetchProduct() {
+    try {
+      const res = await axios.get("/db.json");
+      const data = res.data;
+
+      let finalData = [];
+
+      // 1️⃣ ALL DATA (ALL CATEGORY)
+      if (cat === "" || cat === "menu") {
+        Object.keys(data).forEach((key) => {
+          finalData = [...finalData, ...data[key]];
+        });
+      } else {
+        // 2️⃣ SPECIFIC CATEGORY
+        finalData = data[cat] || [];
+      }
+
+      // 3️⃣ SEARCH FILTER
+      if (search.trim() !== "") {
+        finalData = finalData.filter((item) =>
+          item.title.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+
+      setState(finalData);
+    } catch (err) {
+      console.log("Error:", err);
     }
   }
 
   useEffect(() => {
-    fetchProduct(cat);
-  }, [search, category]);
+    if (category) {
+      setCat(category);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [cat, search,category]);
 
   function handleCategory(category) {
     setCat(category);
-    fetchProduct(category, search);
   }
 
   function AddToCart(item) {
@@ -78,12 +93,9 @@ function Menu() {
           />
         </div>
 
-        {/* First Row of Categories */}
+        {/* FULL ORIGINAL CATEGORIES */}
         <div className="mb-3">
-          <ul
-            className="d-flex flex-wrap gap-2"
-            style={{ listStyle: "none", padding: 0, justifyContent: "center" }}
-          >
+          <ul className="d-flex flex-wrap gap-2 justify-content-center" style={{ listStyle: "none" }}>
             <li onClick={() => handleCategory("")} className="btn btn-outline-success btn-sm">ALL</li>
             <li onClick={() => handleCategory("salad")} className="btn btn-outline-success btn-sm">SALADS</li>
             <li onClick={() => handleCategory("pasta")} className="btn btn-outline-success btn-sm">PASTA</li>
@@ -98,12 +110,8 @@ function Menu() {
           </ul>
         </div>
 
-        {/* Second Row of Categories */}
         <div className="mb-4">
-          <ul
-            className="d-flex flex-wrap gap-2"
-            style={{ listStyle: "none", padding: 0, justifyContent: "center" }}
-          >
+          <ul className="d-flex flex-wrap gap-2 justify-content-center" style={{ listStyle: "none" }}>
             <li onClick={() => handleCategory("ricebowl")} className="btn btn-outline-success btn-sm">RICE BOWL</li>
             <li onClick={() => handleCategory("pudding")} className="btn btn-outline-success btn-sm">PUDDING</li>
             <li onClick={() => handleCategory("refresher")} className="btn btn-outline-success btn-sm">REFRESHER</li>
@@ -114,32 +122,28 @@ function Menu() {
           </ul>
         </div>
 
-        {/* Product Cards */}
+        {/* Products */}
         <div className="row g-4">
           {state.map((item) => (
             <div
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
               className="col-lg-6 col-md-12"
               style={styling.card}
               key={item.id}
             >
-              <div className="row g-3 align-items-center">
-                <div className="col-md-6 col-12">
-                  <Link to={`/${item.category}`}>
+              <div className="row g-3 align-items-center"   data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom">
+                <div className="col-md-6 col-12" >
+                  <Link to={`/${item.category}/${item.id}`}>
                     <div style={styling.imgContainer} className="img-hover-container">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        style={styling.img}
-                        className="zoom-img"
-                      />
+                      <img src={item.image} alt={item.title} style={styling.img} className="zoom-img" />
                     </div>
                   </Link>
                 </div>
+
                 <div className="col-md-6 col-12">
                   <h4>{item.title} - ₹{item.price}</h4>
                   <p>{item.Description}</p>
+
                   <button className="btn btn-success p-2 mt-2" onClick={() => AddToCart(item)}>
                     <i className="fa-solid fa-cart-plus text-light fs-5"></i>
                   </button>
@@ -148,16 +152,15 @@ function Menu() {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Hover Zoom Effect */}
-      <style>
-        {`
-          .img-hover-container:hover .zoom-img {
-            transform: scale(1.2);
-          }
-        `}
-      </style>
+        <style>
+          {`
+            .img-hover-container:hover .zoom-img {
+              transform: scale(1.2);
+            }
+          `}
+        </style>
+      </div>
     </div>
   );
 }

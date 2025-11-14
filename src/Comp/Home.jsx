@@ -19,6 +19,7 @@ function Home() {
   useEffect(() => {
     fetchProduct();
   }, [category, id]);
+  
   const fetchProduct = async () => {
     const info = await axios.get("http://localhost:3000/slider");
     setProduct(info.data);
