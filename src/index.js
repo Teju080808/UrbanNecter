@@ -7,17 +7,23 @@ import "@fontsource/tangerine";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+// ADD SWIPER CSS (IMPORTANT)
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import reportWebVitals from "./reportWebVitals";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { myStore } from "./Comp/ReducCart/Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={myStore}>
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>
 );
 
